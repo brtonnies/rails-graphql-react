@@ -4,6 +4,6 @@ class Link < ApplicationRecord
 	private
 
 	def notify_subscriber_of_addition
-		GraphqlRailsApiSchema.subscription.trigger("newLink", {}, self)
+		GraphQLRailsApiSchema.subscription.trigger("newLink", {}, self)
 	end
 end

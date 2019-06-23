@@ -1,4 +1,4 @@
-class GraphqlChannel < ApplicationCable::Channel
+class GraphQLChannel < ApplicationCable::Channel
   def subscribed
     @subscription_ids = []
   end
@@ -13,7 +13,7 @@ class GraphqlChannel < ApplicationCable::Channel
       channel: self,
     }
 
-    result = GraphqlRailsApiSchema.execute({
+    result = GraphQLRailsApiSchema.execute({
       query: query,
       context: context,
       variables: variables,
@@ -36,7 +36,7 @@ class GraphqlChannel < ApplicationCable::Channel
 
   def unsubscribed
     @subscription_ids.each { |sid|
-      GraphqlRailsApiSchema.subscriptions.delete_subscription(sid)
+      GraphQLRailsApiSchema.subscriptions.delete_subscription(sid)
     }
   end
 
